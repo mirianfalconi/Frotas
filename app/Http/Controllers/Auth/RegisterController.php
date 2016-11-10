@@ -52,12 +52,12 @@ class RegisterController extends Controller
     public function storeCidade(Request $request){
 
 
-  //    Validator::make($request->all(), [
-  //        'cidade' => 'required|max:45|unique:cidade',
-  //    ])->validate();
+      Validator::make($request->all(), [
+          'cidade' => 'required|max:45|unique:cidade',
+      ])->validate();
 
         $cidade = Cidade::create([
-          'cidade' => $request->cidades,
+          'cidade' => $request->cidade,
         ]);
 
         return response()->json([ 'cidade' => $cidade->cidade, 'id' => $cidade->id ]);
@@ -74,7 +74,7 @@ class RegisterController extends Controller
           'cargo' => $request->cargo,
         ]);
 
-        return response()->json([ 'cargo' => $cargo->cargo ]);
+        return response()->json([ 'cargo' => $cargo ]);
     }
 
     public function showRegistrationForm()
@@ -124,7 +124,7 @@ class RegisterController extends Controller
                 'telefone' => $data['telefone'],
                 'password' => bcrypt($data['password']),
                 'endereco' => $data['endereco'] . " " . $data['numero'],
-                'cidade_id'   => $data['cidade'],
+                'cidade_id'   => $data['cidades'],
                 'cnh'      => $data['cnh'],
               ]);
 

@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
 
          $gate->define('dp', function($funcionario, $cargos_funcionarios){
 
-           return $cargos_funcionarios == 8;
+           return $cargos_funcionarios == 1;
          });
      }
 }

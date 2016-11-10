@@ -34,7 +34,7 @@ class HomeController extends Controller
 
        $cargos_funcionarios = CargoFuncionario::where('funcionarios_id', '=', Auth::user()->id )->first();
 
-        if( $cargos_funcionarios->cargos_id == 8){
+        if( $cargos_funcionarios->cargos_id == 1){
 
             return redirect('/register');
         }

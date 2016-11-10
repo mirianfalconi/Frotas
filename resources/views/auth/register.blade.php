@@ -147,19 +147,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="cidade" class="col-md-4 control-label">Cidade</label>
+                            <label for="cidades" class="col-md-4 control-label">Cidade</label>
 
                             <div id='sucessoCidade' class="col-md-6">
-                              <select id='selectCidade' name="cidade" class="form-control" >
+                              <select id='selectCidade' name="cidades" class="form-control" >
                                 @foreach ($cidade as $funcionario)
 
                                     <option value="{{ $funcionario->id }}">{{ $funcionario->cidade }}</option>
                                 @endforeach
                               </select>
 
-                              @if ($errors->has('cidade'))
+                              @if ($errors->has('cidades'))
                                   <span class="help-block">
-                                      <strong>{{ $errors->first('cidade') }}</strong>
+                                      <strong>{{ $errors->first('cidades') }}</strong>
                                   </span>
                               @endif
 
@@ -171,10 +171,10 @@
 
 
                         <div id='criaCidade' class="form-group">
-                            <label for="cidades" class="col-md-4 control-label">Nova Cidade</label>
+                            <label for="cidade" class="col-md-4 control-label">Nova Cidade</label>
 
-                              <div id="cidades" class="col-md-6">
-                                  <input id="recebeCidade" type="text" class="form-control" name="cidades" value="" >
+                              <div id="cidade" class="col-md-6">
+                                  <input id="recebeCidade" type="text" class="form-control" name="cidade" value="" >
 
                             </div>
                             <button id='sendCidade' type="text" class="btn btn-primary">
@@ -266,7 +266,7 @@
         dataType: 'JSON',
         success: function (data) {
 
-            $('#selectCargo').append('<option value="'+ data.cargo +'" selected>' + data.cargo + '</option>');
+            $('#selectCargo').append('<option value="'+ data.cargo.id +'" selected>' + data.cargo.cargo + '</option>');
             $('#criaCargo').val('');
             $('#criaCargo').css('display' , 'none');
 
@@ -344,7 +344,7 @@
     $('#sendCidade').click(function(e) {
       e.preventDefault();
 
-      var $cidade = {'cidades' : $('#recebeCidade').val() };
+      var $cidade = {'cidade' : $('#recebeCidade').val() };
 
       $.ajax({
           type: 'POST',
@@ -364,7 +364,7 @@
           },
 
           error: function(data){
-            $('#cidades').append('<span class="help-block"><strong> '+  data.responseJSON.cidade[0] +'</strong></span>');
+            $('#cidade').append('<span class="help-block"><strong> '+  data.responseJSON.cidade[0] +'</strong></span>');
             $('.help-block').delay( 8000 ).slideUp( 100 );
           }
         });
