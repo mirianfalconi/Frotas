@@ -77,6 +77,24 @@
         </div>
     </nav>
 
+    <div class="container">
+
+    <nav class="navbar navbar-inverse">
+
+    	<ul class="nav navbar-nav">
+    		<li><a href="{{ URL::to('rota') }}">Ver Todas as Rotas Cadastradas</a></li>
+    		<li><a href="{{ URL::to('rota/create') }}">Criar Rota</a>
+    	</ul>
+    </nav>
+
+
+    <!-- will be used to show any messages -->
+    @if (Session::has('message'))
+    	<div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
+
+
+
     @yield('content')
 
     <!-- Scripts -->

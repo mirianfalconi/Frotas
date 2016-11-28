@@ -19,10 +19,22 @@ Route::get('/', 'HomeController@index');
 //  Adiciona campos ao form Departamento Pessoal
 ///////////////////////////////////////////////////////////////
 
-Route::get('/departamentoPessoal', 'DepPessoalController@index');
-Route::post('/addCidade', 'Auth\RegisterController@storeCidade');
-Route::post('/addCnhCategoria', 'Auth\RegisterController@storeCategoria');
-Route::post('/addCargo', 'Auth\RegisterController@storeCargo');
+Route::post('/addCidade', 'DepartamentoPessoal@storeCidade');
+Route::post('/addCnhCategoria', 'DepartamentoPessoal@storeCategoria');
+Route::post('/addCargo', 'DepartamentoPessoal@storeCargo');
+Route::resource('dp', 'DepartamentoPessoal');
 
-Route::get('register', 'Auth\RegisterController@showRegistrationForm');
-Route::post('register', 'Auth\RegisterController@register');
+
+////////////////////////////////////////////////////////////////
+//
+//  Adiciona campos ao form CoordenadorTransporte
+///////////////////////////////////////////////////////////////
+
+Route::get('coordenador_transporte', 'CoordenadorTransporte@index');
+
+Route::get('rota', 'CadastrarRota@index');
+Route::get('rota', 'CadastrarRota@showMotorista');
+
+Route::resource('nota', 'CadastrarNota');
+
+Route::post('rota', 'CadastrarRota@create');

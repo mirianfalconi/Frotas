@@ -8,20 +8,12 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
+
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     *
-     * @return void
-     */
+
      public function boot(GateContract $gate)
      {
          parent::registerPolicies($gate);
@@ -30,5 +22,18 @@ class AuthServiceProvider extends ServiceProvider
 
            return $cargos_funcionarios == 1;
          });
+
+         $gate->define('ct', function($funcionario, $cargos_funcionarios){
+
+           return $cargos_funcionarios == 2;
+         });
+
+         $gate->define('rota', function($funcionario, $cargos_funcionarios, $numero_nota){
+
+            if($cargos_funcionarios == 2 && $numero_nota > 0){
+                return true;
+            }
+           return false;
+          });
      }
 }

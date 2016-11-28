@@ -36,7 +36,12 @@ class HomeController extends Controller
 
         if( $cargos_funcionarios->cargos_id == 1){
 
-            return redirect('/register');
+            return redirect('/dp');
+        }
+
+        if( $cargos_funcionarios->cargos_id == 2){
+
+            return redirect('/coordenador_transporte');
         }
 
 
