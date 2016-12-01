@@ -32,9 +32,10 @@ Route::resource('dp', 'DepartamentoPessoal');
 
 Route::get('coordenador_transporte', 'CoordenadorTransporte@index');
 
-Route::get('rota', 'CadastrarRota@index');
-Route::get('rota', 'CadastrarRota@showMotorista');
 
 Route::resource('nota', 'CadastrarNota');
 
-Route::post('rota', 'CadastrarRota@create');
+Route::resource('rota', 'CadastrarRota');
+
+
+Route::post('/addVeiculo', 'CadastrarRota@storeVeiculo');

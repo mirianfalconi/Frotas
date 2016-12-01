@@ -103,11 +103,11 @@ class CadastrarNota extends Controller
   {
       return Validator::make($data, [
           'numero_nota'     => 'required|min:0|max:45',
-          'icms' => 'required|min:0|max:100|numeric',
-          'peso'   => 'numeric|min:0',
-          'valor' => 'required|numeric|min:0|max:9999999999',
-          'quantidade' => 'required|min:1|max:9999999999|numeric',
-          'data_emissao'      => 'date|required',
+          'icms'            => 'required|min:0|max:100|numeric',
+          'peso'            => 'numeric|min:0',
+          'valor'           => 'required|numeric|min:0|max:9999999999',
+          'quantidade'      => 'required|min:1|max:9999999999|numeric',
+          'data_emissao'    => 'date|required',
       ]);
   }
 
@@ -117,11 +117,11 @@ class CadastrarNota extends Controller
 
     $nota =  Nota::create([
               'numero_nota'     => $data['numero_nota'],
-              'icms' => $data['icms'],
-              'peso' => $data['peso'],
-              'valor' => $data['valor'],
-              'quantidade'   => $data['quantidade'],
-              'data_emissao'      => $date->format('Y/m/d'),
+              'icms'            => $data['icms'],
+              'peso'            => $data['peso'],
+              'valor'           => $data['valor'],
+              'quantidade'      => $data['quantidade'],
+              'data_emissao'    => $date->format('Y/m/d'),
             ]);
 
         \Session::flash('flash_message', 'Nota Adicionada');

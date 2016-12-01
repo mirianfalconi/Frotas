@@ -3,8 +3,7 @@
                       <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><em> Sucesso! Cadastrado com a Matrícula {!! session('flash_message') !!}.</em></div>
                   @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/dp') }}">
-                        {{ csrf_field() }}
+
 
 
                         <div class="form-group">
@@ -80,13 +79,19 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group{{ $errors->has('categorias') ? ' has-error' : '' }}">
                             <label for="categoria" class="col-md-4 control-label">Categoria</label>
 
                             <div id='categorias' class="col-md-6">
                               @foreach ($carteira as $funcionario)
                                   <input type="checkbox" name="categorias[]" value="{{ $funcionario->id }}"> {{ $funcionario->categoria }}
                               @endforeach
+
+                              @if ($errors->has('categorias'))
+                                  <span class="help-block">
+                                      <strong>{{ $errors->first('categorias') }}</strong>
+                                  </span>
+                              @endif
 
                             </div>
                             <button id="plusCategoria" type="button" class="btn btn-default" aria-label="Left Align">

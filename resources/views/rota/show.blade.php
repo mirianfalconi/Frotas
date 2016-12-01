@@ -2,20 +2,21 @@
 
 @section('content')
 
-<h1>Rota {{ $rota->numero_nota }}</h1>
+<h1>Rota {{ $rota[0]->id }}</h1>
 
 	<div class="jumbotron">
 		<p>
 
-			<strong>ID:</strong> {{ $nota->id }}<br>
-			<strong>Número da Nota:</strong> {{ $nota->numero_nota }}<br>
-      <strong>ICMS:</strong> {{ $nota->icms }}<br>
-			<strong>Peso:</strong> {{ $nota->peso }}<br>
 
-			<strong>Valor:</strong> {{ $nota->valor }}<br>
-      <strong>Quantidade:</strong> {{ $nota->quantidade }}<br>
-			<strong>Data de Emissão:</strong> {{ $nota->data_emissao }}<br>
+@foreach($rota as $key => $value)
+			<strong>ID:</strong> {{ $value->id }}<br>
+			<strong>Horário Saída:</strong> {{ $value->horario_saida }}<br>
+      <strong>Motorista:</strong> {{ $value->motorista }}<br>
+			<strong>Auxiliar de Transporte:</strong> {{ $value->auxiliar }}<br>
 
+			<strong>Placa do Veículo:</strong> {{ $value->placa }}<br>
+      <strong>Lista de Notas:</strong> {{ $value->nota }}<br>
+	@endforeach
 
 
   	</p>

@@ -9,7 +9,7 @@
                 <div class="panel-body">
 
               <form class="form-horizontal" role="form" method="POST" action="{{ url('/rota') }}">
-
+              
               {{ csrf_field() }}
               @if(Session::has('flash_message'))
               <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><em>A rota foi cadastrada com sucesso!</em></div>

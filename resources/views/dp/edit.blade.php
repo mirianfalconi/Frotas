@@ -9,7 +9,7 @@
                 <div class="panel-body">
 
 
-              {!! Form::open(array('action' => array('DepartamentoPessoal@update', $dp->id), 'method' => 'PUT')) !!}
+              {!! Form::open(array('action' => array('DepartamentoPessoal@update', $dp[0]->id), 'method' => 'PUT')) !!}
               {{ csrf_field() }}
               @if(Session::has('flash_message'))
               <div class="alert alert-success"><span class="glyphicon glyphicon-ok"></span><em>O funcionário foi atualizado com sucesso!</em></div>

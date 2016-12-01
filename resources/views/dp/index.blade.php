@@ -6,11 +6,10 @@
 <table class="table table-striped table-bordered">
 	<thead>
 		<tr>
-			<td>ID</td>
+			<td>Cargo</td>
 			<td>Nome</td>
 			<td>Telefone</td>
 			<td>Endereço</td>
-			<td>Cidade</td>
 			<td>CNH</td>
 		</tr>
 	</thead>
@@ -20,11 +19,10 @@
 
 
 		<tr>
-			<td>{{ $value->id }}</td>
+			<td>{{ $value->cargo }}</td>
 			<td>{{ $value->nome }}</td>
 			<td>{{ $value->telefone }}</td>
-			<td>{{ $value->endereco }}</td>
-			<td>{{ $value->cidade }}</td>
+			<td>{{ $value->endereco }} <br> {{ $value->cidade }} </td>
 			@if($value->categoria)
 			<td>{{ $value->categoria }} : {{ $value->cnh }}</td>
 			@else
@@ -35,7 +33,6 @@
 				{!! Form::open(array('url' => 'dp/' . $value->id, 'class' => 'pull-right')) !!}
 					{!! Form::submit('Deletar Funcionario', array('class' => 'btn btn-warning')) !!}
           <a class="btn btn-small btn-success" href="{{ URL::to('dp/' . $value->id) }}">Mostrar Funcionário</a>
-          <a class="btn btn-small btn-info" href="{{ URL::to('dp/' . $value->id . '/edit') }}">Editar Funcionário</a>
           	{!! Form::hidden('_method', 'DELETE') !!}
 				{!! Form::close() !!}
 

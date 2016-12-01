@@ -84,10 +84,19 @@ class DepartamentoPessoal extends Controller
 
   public function edit($id)
   {
-    $dp = Funcionario::find($id);
+    $dp = DB::select("SELECT cnh.ct as categoria, funcionarios.id as id, nome, telefone, endereco, cnh, cidade, cargo
+                								FROM cargos
+                                JOIN cargos_funcionarios ON (cargos.id = cargos_funcionarios.cargos_id)
+                								JOIN funcionarios ON  (funcionarios.id=cargos_funcionarios.funcionarios_id)
+                                LEFT JOIN
+                                (SELECT GROUP_CONCAT(categoria SEPARATOR '') as ct, funcionarios_id
+                									 FROM carteira_motorista
+                										RIGHT JOIN cnh_funcionario ON (tipo_cnh_id = carteira_motorista.id)
+                											group by cnh_funcionario.funcionarios_id) AS cnh
+                                ON (cnh.funcionarios_id = funcionarios.id)
+                              	JOIN cidade ON (funcionarios.cidade_id= cidade.id) where funcionarios.id = $id");
 
-    $dp->cidade_id = Cidade::select('cidade')->where('id', $dp->cidade_id)->first()->cidade;
-
+    var_dump($dp);
     return view('dp.edit')
       ->with('dp', $dp);
   }
